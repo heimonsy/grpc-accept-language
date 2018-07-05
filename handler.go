@@ -39,7 +39,10 @@ func HandleAcceptLanguage(ctx context.Context) AcceptLanguages {
 		return nil
 	}
 
-	acceptLangHeader := header[0]
+	return ParseAcceptLanguage(header[0])
+}
+
+func ParseAcceptLanguage(acceptLangHeader string) AcceptLanguages {
 	acceptLangHeaderSlice := strings.Split(acceptLangHeader, ",")
 
 	acceptLangs := make(AcceptLanguages, len(acceptLangHeaderSlice))
